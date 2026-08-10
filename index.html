@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Webcam App –</title>
+    <style>
+      :root{
+        --panel-w: 280px;
+        --bg:#111; --bg2:#1a1a1a; --fg:#eee; --muted:#9cd7ff; --card:#181818; --border:#2a2a2a;
+      }
+      
+      /* Layout */
+      html,body{height:100%}
+      body{
+        margin:0; background:var(--bg); color:var(--fg);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      }
+      header{ padding:12px 16px; background:var(--bg2); border-bottom:1px solid #333; }
+      .hint{ font-size:14px; opacity:.9 }
+      .hint kbd{ background:#222; border:1px solid #444; padding:2px 6px; border-radius:4px; }
+
+      /* Two-column app area */
+      .app{
+        display:flex; gap:16px; align-items:flex-start;
+        padding:16px;
+      }
+      /* Left-- canvas/grid column */
+      #canvas-col{ flex: 1; min-width: 600px; }
+      #canvas-holder{
+        display:flex; justify-content:center;
+      }
+
+      /* Right-- controls panel */
+      #controls{
+        width: var(--panel-w);
+        position: sticky; top: 12px;
+        background: var(--card);
+        border:1px solid var(--border);
+        border-radius:10px;
+        padding:12px;
+        max-height: calc(100vh - 24px);
+        overflow:auto;
+      }
+      #controls h3{
+        margin:6px 4px 10px; font-size:16px; font-weight:700;
+      }
+      #controls-list{ display:flex; flex-direction:column; gap:10px; }
+
+      .ctrl{
+        display:flex; align-items:center; gap:8px;
+        background:#141414; border:1px solid #222; border-radius:8px; padding:8px;
+      }
+      .ctrl .lbl{ width:64px; text-align:right; opacity:.85; font-size:13px; }
+      .ctrl .val{ margin-left:auto; min-width:36px; text-align:right; opacity:.85; font-family:monospace; }
+
+      .ctrl input[type="range"]{ width: 140px; }
+      select{ width: 100%; padding:6px 8px; background:#0f0f0f; color:var(--fg); border:1px solid #2a2a2a; border-radius:6px;}
+      a{ color:var(--muted); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="hint">
+        Press <kbd>S</kbd> to snapshot the Webcam.
+        Open this page via <em>localhost</em> or HTTPS so the camera works.
+      </div>
+    </header>
+
+    <div class="app">
+      <!-- LEFT column canvas/grid -->
+      <div id="canvas-col">
+        <div id="canvas-holder"></div>
+      </div>
+
+      <!-- RIGHT column sticky controls panel -->
+      <aside id="controls">
+        <h3>Control Panels</h3>
+        <div id="controls-list"></div>
+      </aside>
+    </div>
+
+    <!-- Libraries that i used -->
+    <script src="libraries/p5.min.js" type="text/javascript"></script>
+    <script src="libraries/objectdetect.js"></script>
+    <script src="libraries/objectdetect.frontalface.js"></script>
+
+    <!-- My modules -->
+    <script src="src/grayscalePlus20.js"></script>
+    <script src="src/channels.js"></script>
+    <script src="src/thresholdChannel.js"></script>
+    <script src="src/colorSpaces.js"></script>
+    <script src="src/thresholdFilters.js"></script>
+    <script src="src/faceDetection.js"></script>
+    <script src="src/faceReplacement.js"></script>
+    <script src="src/emojiExt.js"></script>
+    <script src="src/backgroundsExt.js"></script>
+    <script src="src/cartoonExt.js"></script>
+    <script src="src/neonExt.js"></script>
+    <script src="src/fractalExt.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>
